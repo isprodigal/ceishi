@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="vue-2.4.0.js"></script>
+    <style>
+      #app {
+        /* width: 200px; */
+        /* height: 100px; */
+        /* background-color: skyblue; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" @click="lang">{{ message }}
+      <input type="button" value="停" id="ti" @click='las'>
+    </div>
+    
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: "看什么看,是不是傻",
+          sun:null
+        },
+        methods: {
+          lang() {
+            if(this.sun){
+              return 
+            }
+            // console.log(this.message)
+            //截取第一个字放到最后一个字的位置
+              setInterval(() => {
+              var sum = this.message;
+              var arr = sum.slice(0, 1);
+              sum = sum.replace(arr, "");
+              sum = sum.concat(arr);
+              this.message=sum
+            }, 500);
+          }
+          ,
+          las(){
+            this.sun=true;
+            clearInterval(this.setInterval)
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
